@@ -1,6 +1,6 @@
-import { defineConfig, devices } from '@playwright/test';
-import { nxE2EPreset } from '@nx/playwright/preset';
 import { workspaceRoot } from '@nx/devkit';
+import { nxE2EPreset } from '@nx/playwright/preset';
+import { defineConfig, devices } from '@playwright/test';
 
 // For CI, you may want to set BASE_URL to the deployed application.
 const baseURL = process.env['BASE_URL'] || 'http://localhost:4200';
@@ -14,15 +14,11 @@ const baseURL = process.env['BASE_URL'] || 'http://localhost:4200';
 /**
  * See https://playwright.dev/docs/test-configuration.
  *
- * Generated as a .mts file so Node forces ESM regardless of workspace
- * `type`. Playwright routes `.mts` through its ESM loader (dynamic import,
- * bypassing the pirates CJS-compile path), and Nx's native TS strip loads
- * `.mts` directly. Playwright's configLoader auto-discovers
- * `playwright.config.mts` via its extension list
- * (.ts/.js/.mts/.mjs/.cts/.cjs).
+ * Playwright transpiles this config to CommonJS before loading it, so
+ * `__dirname` is available here while `import.meta` is not.
  */
 export default defineConfig({
-  ...nxE2EPreset(import.meta.dirname, { testDir: './src' }),
+  ...nxE2EPreset(__dirname, { testDir: './src/specs' }),
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     baseURL,
@@ -42,15 +38,16 @@ export default defineConfig({
       use: { ...devices['Desktop Chrome'] },
     },
 
-    {
-      name: 'firefox',
-      use: { ...devices['Desktop Firefox'] },
-    },
+    // Uncomment for more desktop browser support
+    // {
+    //   name: 'firefox',
+    //   use: { ...devices['Desktop Firefox'] },
+    // },
 
-    {
-      name: 'webkit',
-      use: { ...devices['Desktop Safari'] },
-    },
+    // {
+    //   name: 'webkit',
+    //   use: { ...devices['Desktop Safari'] },
+    // },
 
     // Uncomment for mobile browsers support
     /* {
