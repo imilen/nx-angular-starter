@@ -1,9 +1,4 @@
 # Add files here to ignore them from prettier formatting
-/dist
-/coverage
-/.nx/cache
-/.nx/workspace-data
 package-lock.json
-.angular
-
-.nx/self-healing
+pnpm-lock.yaml
+yarn.lock
