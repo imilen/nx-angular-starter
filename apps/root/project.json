@@ -62,10 +62,10 @@
       "executor": "@nx/eslint:lint"
     },
     "test": {
-      "executor": "@nx/vitest:test",
-      "outputs": ["{options.reportsDirectory}"],
+      "executor": "@analogjs/vitest-angular:test",
       "options": {
-        "reportsDirectory": "coverage/apps/root"
+        "configFile": "vitest.config.mts",
+        "coverage": true
       }
     },
     "serve-static": {

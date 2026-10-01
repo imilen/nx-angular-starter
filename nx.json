@@ -9,7 +9,10 @@
       "!{projectRoot}/.eslintrc.json",
       "!{projectRoot}/eslint.config.mjs",
       "!{projectRoot}/**/?(*.)+(spec|test).[jt]s?(x)?(.snap)",
-      "!{projectRoot}/tsconfig.spec.json"
+      "!{projectRoot}/tsconfig.spec.json",
+      "!{projectRoot}/vite.config.?([mc])[jt]s",
+      "!{projectRoot}/vitest.config.?([mc])[jt]s",
+      "!{projectRoot}/src/test-setup.[jt]s"
     ],
     "sharedGlobals": []
   },
@@ -23,9 +26,10 @@
       "cache": true,
       "inputs": ["default", "^default", "{workspaceRoot}/eslint.config.mjs"]
     },
-    "@nx/vitest:test": {
+    "test": {
       "cache": true,
-      "inputs": ["default", "^production"]
+      "inputs": ["default", "^production"],
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"]
     }
   },
   "plugins": [

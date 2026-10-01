@@ -1,17 +1,14 @@
-/// <reference types='vitest' />
-import { defineConfig } from 'vite';
 import angular from '@analogjs/vite-plugin-angular';
-import { nxViteTsPaths } from '@nx/vite/plugins/nx-tsconfig-paths.plugin';
-import { nxCopyAssetsPlugin } from '@nx/vite/plugins/nx-copy-assets.plugin';
+import tailwindcss from '@tailwindcss/vite';
+import { defineConfig } from 'vite';
 
 export default defineConfig(() => ({
   root: import.meta.dirname,
   cacheDir: '../../node_modules/.vite/apps/root',
-  plugins: [angular(), nxViteTsPaths(), nxCopyAssetsPlugin(['*.md'])],
-  // Uncomment this if you are using workers.
-  // worker: {
-  //   plugins: () => [ nxViteTsPaths() ],
-  // },
+  plugins: [angular(), tailwindcss()],
+  resolve: {
+    tsconfigPaths: true,
+  },
   test: {
     name: 'root',
     watch: false,
@@ -22,7 +19,10 @@ export default defineConfig(() => ({
     reporters: ['default'],
     coverage: {
       reportsDirectory: '../../coverage/apps/root',
-      provider: 'v8' as const,
+      provider: 'v8',
+      reporter: ['text'],
+      include: ['src/**/*.ts'],
+      exclude: ['src/**/*.spec.ts', 'src/test-setup.ts', 'src/main.ts'],
     },
   },
 }));
