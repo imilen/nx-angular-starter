@@ -1,3 +1,32 @@
 {
+  "attributeGroups": [
+    "$CODE_GUIDE",
+    "$DEFAULT",
+    "$ANGULAR",
+    "^let-.*$",
+    "^i18n$",
+    "^i18n-.*$"
+  ],
+  "attributeIgnoreCase": false,
+  "attributeSort": "ASC",
+  "bracketSameLine": true,
+  "htmlWhitespaceSensitivity": "ignore",
+  "organizeImportsSkipDestructiveCodeActions": true,
+  "overrides": [
+    {
+      "excludeFiles": ["nx.json", "package.json", "project.json"],
+      "files": ["*.json"],
+      "options": {
+        "jsonRecursiveSort": true,
+        "plugins": ["prettier-plugin-sort-json"]
+      }
+    }
+  ],
+  "plugins": [
+    "prettier-plugin-organize-imports",
+    "prettier-plugin-organize-attributes"
+  ],
+  "proseWrap": "never",
+  "singleAttributePerLine": true,
   "singleQuote": true
 }
