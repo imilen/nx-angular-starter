@@ -1,0 +1,22 @@
+# Use LF line endings for all text files
+* text=auto eol=lf
+
+# Binary files
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.webp binary
+*.avif binary
+*.ico binary
+*.pdf binary
+*.woff binary
+*.woff2 binary
+*.eot binary
+*.ttf binary
+*.otf binary
+
+# Lockfiles: hide from GitHub diffs and language stats
+package-lock.json linguist-generated=true
+pnpm-lock.yaml linguist-generated=true
+yarn.lock linguist-generated=true
