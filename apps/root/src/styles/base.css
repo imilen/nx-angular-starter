@@ -1,2 +1,14 @@
 @layer base {
+  html {
+    @apply scrollbar-gutter-stable scroll-smooth;
+  }
+
+  html,
+  body {
+    @apply relative min-h-svh;
+  }
+
+  body {
+    @apply bg-white text-base text-black antialiased;
+  }
 }

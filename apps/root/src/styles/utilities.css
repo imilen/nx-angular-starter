@@ -1,0 +1,7 @@
+@utility flex-fluid {
+  @apply flex flex-1 flex-col;
+}
+
+@utility app-container {
+  @apply container mx-auto my-0 px-4 py-0;
+}

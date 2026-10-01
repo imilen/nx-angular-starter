@@ -1,2 +1,4 @@
 @theme {
+  --font-custom-mono: 'JetBrains Mono', var(--font-mono);
+  --default-font-family: var(--font-custom-mono);
 }
