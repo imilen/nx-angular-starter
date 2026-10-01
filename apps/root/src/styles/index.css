@@ -1,0 +1,8 @@
+@import 'tailwindcss' source('../app/');
+
+@import './theme.css';
+@import './base.css';
+@import './utilities.css';
+
+@plugin '@tailwindcss/forms';
+@plugin '@tailwindcss/typography';
