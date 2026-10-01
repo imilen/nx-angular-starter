@@ -1,0 +1,5 @@
+@reference "../styles/index.css";
+
+:host {
+  @apply flex min-h-dvh flex-col;
+}
