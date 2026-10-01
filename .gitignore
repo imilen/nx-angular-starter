@@ -1,51 +1,56 @@
 # See https://docs.github.com/en/get-started/getting-started-with-git/ignoring-files for more about ignoring files.
 
 # compiled output
+/typings
 dist
-tmp
 out-tsc
+tmp
 
 # dependencies
 node_modules
 
-# IDEs and editors
-/.idea
-.project
-.classpath
-.c9/
-*.launch
-.settings/
-*.sublime-workspace
+# caches
+.angular
+.nx
 
-# IDE - VSCode
+# environment
+.env
+.env.*
+!.env.example
+
+# testing
+coverage
+vitest.config.*.timestamp*
+
+# logs
+*.log
+
+# ai agents
+.claude/settings.json
+.claude/settings.*.json
+.claude/worktrees
+
+# IDEs and editors
+*.launch
+*.sublime-workspace
+.c9
+.classpath
+.idea
+.project
+.settings
+
+# IDEs and editors - VSCode
 .vscode/*
+!.vscode/extensions.json
+!.vscode/launch.json
 !.vscode/settings.json
 !.vscode/tasks.json
-!.vscode/launch.json
-!.vscode/extensions.json
 
-# misc
-/.sass-cache
-/connect.lock
-/coverage
-/libpeerconnection.log
-npm-debug.log
-yarn-error.log
-testem.log
-/typings
-
-# System Files
+# system files
 .DS_Store
 Thumbs.db
 
-.nx/cache
-.nx/workspace-data
-.nx/migrate-runs
-.claude/worktrees
-.claude/settings.local.json
-
-.angular
-
-vitest.config.*.timestamp*
-.nx/polygraph
-.nx/self-healing
+# misc
+.sass-cache
+connect.lock
+migrations.json
