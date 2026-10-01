@@ -2,15 +2,14 @@ import type { Locator, Page } from '@playwright/test';
 import { BasePage } from './base.page';
 
 export class AppPage extends BasePage {
+  readonly root: Locator;
+
   constructor(page: Page) {
-    super(page, '/');
+    super(page);
+    this.root = page.locator('app-root');
   }
 
-  get root(): Locator {
-    return this.page.locator('app-root');
-  }
-
-  get routerOutlet(): Locator {
-    return this.page.locator('router-outlet');
+  async goto() {
+    await this.navigate('/');
   }
 }

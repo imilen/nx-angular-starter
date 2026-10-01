@@ -1,23 +1,16 @@
-import { expect, test } from '@playwright/test';
-import { AppPage } from '../pages/app.page';
+import { expect, test } from '../support/fixtures';
 
-test.describe('app shell', () => {
-  let appPage: AppPage;
-
-  test.beforeEach(async ({ page }) => {
-    appPage = new AppPage(page);
+test.describe('App', () => {
+  test.beforeEach(async ({ appPage }) => {
     await appPage.goto();
   });
 
-  test('bootstraps the root component', async () => {
-    await expect(appPage.root).toBeAttached();
+  test('renders the app shell', async ({ appPage }) => {
+    await expect(appPage.root).toBeVisible();
   });
 
-  test('mounts the router outlet', async () => {
-    await expect(appPage.routerOutlet).toBeAttached();
-  });
-
-  test('has the expected document title', async () => {
-    expect(await appPage.title()).toBe('root');
+  test('redirects / to /home', async ({ page, homePage }) => {
+    await expect(page).toHaveURL(/\/home$/);
+    await expect(homePage.root).toBeVisible();
   });
 });
