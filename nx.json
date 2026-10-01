@@ -3,10 +3,7 @@
   "defaultBase": "master",
   "analytics": false,
   "namedInputs": {
-    "default": [
-      "{projectRoot}/**/*",
-      "sharedGlobals"
-    ],
+    "default": ["{projectRoot}/**/*", "sharedGlobals"],
     "production": [
       "default",
       "!{projectRoot}/.eslintrc.json",
@@ -19,28 +16,16 @@
   "targetDefaults": {
     "@angular/build:application": {
       "cache": true,
-      "dependsOn": [
-        "^build"
-      ],
-      "inputs": [
-        "production",
-        "^production"
-      ]
+      "dependsOn": ["^build"],
+      "inputs": ["production", "^production"]
     },
     "lint": {
       "cache": true,
-      "inputs": [
-        "default",
-        "^default",
-        "{workspaceRoot}/eslint.config.mjs"
-      ]
+      "inputs": ["default", "^default", "{workspaceRoot}/eslint.config.mjs"]
     },
     "@nx/vitest:test": {
       "cache": true,
-      "inputs": [
-        "default",
-        "^production"
-      ]
+      "inputs": ["default", "^production"]
     }
   },
   "plugins": [
