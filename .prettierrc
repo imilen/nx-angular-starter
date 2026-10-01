@@ -20,13 +20,24 @@
         "jsonRecursiveSort": true,
         "plugins": ["prettier-plugin-sort-json"]
       }
+    },
+    {
+      "files": ["apps/root/**/*.{html,css,ts}"],
+      "options": {
+        "tailwindStylesheet": "apps/root/src/styles/index.css"
+      }
     }
   ],
   "plugins": [
     "prettier-plugin-organize-imports",
-    "prettier-plugin-organize-attributes"
+    "prettier-plugin-organize-attributes",
+    "prettier-plugin-tailwindcss"
   ],
   "proseWrap": "never",
   "singleAttributePerLine": true,
-  "singleQuote": true
+  "singleQuote": true,
+  "tailwindAttributes": ["class", "ngClass"],
+  "tailwindFunctions": ["twMerge", "twJoin", "tv", "cn"],
+  "tailwindPreserveDuplicates": false,
+  "tailwindPreserveWhitespace": true
 }

@@ -25,5 +25,8 @@
   },
   "[typescriptreact]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "tailwindCSS.experimental.configFile": {
+    "apps/root/src/styles/index.css": "apps/root/src/**"
   }
 }
