@@ -26,6 +26,10 @@
       "options": {
         "tailwindStylesheet": "apps/root/src/styles/index.css"
       }
+    },
+    {
+      "files": ["apps/*/src/app/**/*.html", "libs/*/src/lib/**/*.html"],
+      "options": { "parser": "angular" }
     }
   ],
   "plugins": [
