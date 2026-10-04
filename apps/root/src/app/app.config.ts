@@ -1,15 +1,24 @@
 import {
-  type ApplicationConfig,
   provideBrowserGlobalErrorListeners,
   provideZonelessChangeDetection,
+  type ApplicationConfig,
 } from '@angular/core';
-import { provideRouter } from '@angular/router';
+import {
+  NoPreloading,
+  provideRouter,
+  withComponentInputBinding,
+  withPreloading,
+} from '@angular/router';
 import { appRoutes } from './app.routes';
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideBrowserGlobalErrorListeners(),
     provideZonelessChangeDetection(),
-    provideRouter(appRoutes),
+    provideRouter(
+      appRoutes,
+      withComponentInputBinding(),
+      withPreloading(NoPreloading),
+    ),
   ],
 };
