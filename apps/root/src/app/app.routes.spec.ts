@@ -1,29 +1,34 @@
-import { TestBed } from '@angular/core/testing';
-import { provideRouter } from '@angular/router';
-import { RouterTestingHarness } from '@angular/router/testing';
+import { render } from '@testing-library/angular';
+import { App } from './app';
 import { appRoutes } from './app.routes';
-import { Home } from './pages/home/home';
-import { NotFound } from './pages/not-found/not-found';
 
 describe('appRoutes', () => {
-  let harness: RouterTestingHarness;
+  const setup = () => render(App, { routes: appRoutes });
 
-  beforeEach(async () => {
-    TestBed.configureTestingModule({ providers: [provideRouter(appRoutes)] });
-    harness = await RouterTestingHarness.create();
+  it('should redirect the root URL to Home', async () => {
+    const { navigate, findByText } = await setup();
+
+    await navigate('/');
+
+    expect(await findByText('home works!')).toBeTruthy();
+    expect(document.title).toBe('Home');
   });
 
-  it('should render Home at the root URL', async () => {
-    const component = await harness.navigateByUrl('/');
+  it('should render Home at /home', async () => {
+    const { navigate, findByText } = await setup();
 
-    expect(component).toBeInstanceOf(Home);
+    await navigate('/home');
+
+    expect(await findByText('home works!')).toBeTruthy();
     expect(document.title).toBe('Home');
   });
 
   it('should render NotFound for an unknown URL', async () => {
-    const component = await harness.navigateByUrl('/does/not/exist');
+    const { navigate, findByText } = await setup();
 
-    expect(component).toBeInstanceOf(NotFound);
+    await navigate('/does/not/exist');
+
+    expect(await findByText('not-found works!')).toBeTruthy();
     expect(document.title).toBe('Not Found');
   });
 });

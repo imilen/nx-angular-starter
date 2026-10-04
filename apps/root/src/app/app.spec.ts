@@ -1,27 +1,16 @@
-import { TestBed } from '@angular/core/testing';
-import { provideRouter } from '@angular/router';
+import { render } from '@testing-library/angular';
 import { App } from './app';
 
 describe('App', () => {
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports: [App],
-      providers: [provideRouter([])],
-    }).compileComponents();
+  it('should render the main landmark', async () => {
+    const { getByRole } = await render(App, { routes: [] });
+
+    expect(getByRole('main')).toBeTruthy();
   });
 
-  it('should create the app', async () => {
-    const fixture = TestBed.createComponent(App);
-    await fixture.whenStable();
+  it('should render the router outlet inside the main landmark', async () => {
+    const { getByRole } = await render(App, { routes: [] });
 
-    expect(fixture.componentInstance).toBeTruthy();
-  });
-
-  it('should render the router outlet', async () => {
-    const fixture = TestBed.createComponent(App);
-    await fixture.whenStable();
-    const compiled = fixture.nativeElement as HTMLElement;
-
-    expect(compiled.querySelector('router-outlet')).not.toBeNull();
+    expect(getByRole('main').querySelector('router-outlet')).not.toBeNull();
   });
 });

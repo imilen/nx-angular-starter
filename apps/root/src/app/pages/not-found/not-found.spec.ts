@@ -1,12 +1,10 @@
-import { TestBed } from '@angular/core/testing';
+import { render, screen } from '@testing-library/angular';
 import { NotFound } from './not-found';
 
 describe('NotFound', () => {
   it('should render the not-found content', async () => {
-    const fixture = TestBed.createComponent(NotFound);
-    await fixture.whenStable();
-    const el = fixture.nativeElement as HTMLElement;
+    await render(NotFound);
 
-    expect(el.querySelector('p')?.textContent).toContain('not-found works!');
+    expect(screen.getByText('not-found works!')).toBeTruthy();
   });
 });
