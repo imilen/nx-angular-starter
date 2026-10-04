@@ -3,9 +3,22 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "nx": "nx"
+    "nx": "nx",
+    "preinstall": "npx only-allow pnpm"
   },
   "private": true,
+  "packageManager": "pnpm@12.9.1",
+  "engines": {
+    "node": "^22.23.3 || ^24.21.0",
+    "pnpm": ">=12.9.1"
+  },
+  "devEngines": {
+    "runtime": {
+      "name": "node",
+      "version": "24.21.0",
+      "onFail": "download"
+    }
+  },
   "dependencies": {
     "@angular/common": "~22.2.1",
     "@angular/compiler": "~22.2.1",

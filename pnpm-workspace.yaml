@@ -6,3 +6,5 @@ allowBuilds:
   msgpackr-extract: false
   nx: true
   unrs-resolver: false
+
+engineStrict: true
