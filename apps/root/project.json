@@ -64,7 +64,7 @@
     "test": {
       "executor": "@analogjs/vitest-angular:test",
       "options": {
-        "configFile": "vitest.config.mts",
+        "configFile": "vitest.config.unit.mts",
         "coverage": true
       }
     },
@@ -76,6 +76,59 @@
         "port": 4200,
         "staticFilePath": "dist/apps/root/browser",
         "spa": true
+      }
+    },
+    "storybook": {
+      "executor": "@analogjs/storybook-angular:start-storybook",
+      "options": {
+        "port": 6006,
+        "configDir": "apps/root/.storybook",
+        "compodoc": true,
+        "compodocArgs": ["-e", "json", "-d", "apps/root"],
+        "experimentalZoneless": true
+      },
+      "configurations": {
+        "ci": {
+          "quiet": true
+        }
+      }
+    },
+    "build-storybook": {
+      "executor": "@analogjs/storybook-angular:build-storybook",
+      "outputs": ["{options.outputDir}"],
+      "options": {
+        "outputDir": "dist/storybook/apps/root",
+        "configDir": "apps/root/.storybook",
+        "compodoc": true,
+        "compodocArgs": ["-e", "json", "-d", "apps/root"],
+        "experimentalZoneless": true
+      },
+      "configurations": {
+        "ci": {
+          "quiet": true
+        }
+      }
+    },
+    "test-storybook": {
+      "executor": "@analogjs/vitest-angular:test",
+      "options": {
+        "configFile": "vitest.config.storybook.mts",
+        "coverage": true
+      }
+    },
+    "static-storybook": {
+      "executor": "@nx/web:file-server",
+      "dependsOn": ["build-storybook"],
+      "options": {
+        "buildTarget": "root:build-storybook",
+        "staticFilePath": "dist/storybook/apps/root",
+        "spa": true,
+        "port": 6006
+      },
+      "configurations": {
+        "ci": {
+          "buildTarget": "root:build-storybook:ci"
+        }
       }
     }
   }

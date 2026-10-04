@@ -54,3 +54,5 @@ Thumbs.db
 .sass-cache
 connect.lock
 migrations.json
+
+documentation.json

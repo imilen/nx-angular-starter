@@ -1,28 +1,39 @@
 import angular from '@analogjs/vite-plugin-angular';
 import tailwindcss from '@tailwindcss/vite';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 import { defineConfig } from 'vite';
 
-export default defineConfig(() => ({
-  root: import.meta.dirname,
+const dirname =
+  typeof __dirname !== 'undefined'
+    ? __dirname
+    : path.dirname(fileURLToPath(import.meta.url));
+
+export default defineConfig({
+  root: dirname,
   cacheDir: '../../node_modules/.vite/apps/root',
   plugins: [angular(), tailwindcss()],
   resolve: {
     tsconfigPaths: true,
   },
   test: {
-    name: 'root',
+    name: 'root-unit',
     watch: false,
     globals: true,
     environment: 'jsdom',
-    include: ['{src,tests}/**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}'],
+    include: ['src/**/*.spec.ts'],
     setupFiles: ['src/test-setup.ts'],
-    reporters: ['default'],
     coverage: {
       reportsDirectory: '../../coverage/apps/root',
       provider: 'v8',
       reporter: ['text'],
       include: ['src/**/*.ts'],
-      exclude: ['src/**/*.spec.ts', 'src/test-setup.ts', 'src/main.ts'],
+      exclude: [
+        'src/**/*.spec.ts',
+        'src/**/*.stories.ts',
+        'src/test-setup.ts',
+        'src/main.ts',
+      ],
     },
   },
-}));
+});
