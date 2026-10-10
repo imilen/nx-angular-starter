@@ -33,6 +33,7 @@ export default defineConfig({
         'src/**/*.stories.ts',
         'src/test-setup.ts',
         'src/main.ts',
+        'src/environments/**',
       ],
     },
   },

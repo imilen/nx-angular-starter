@@ -9,7 +9,9 @@ import {
   withComponentInputBinding,
   withPreloading,
 } from '@angular/router';
+import { environment } from '../environments';
 import { appRoutes } from './app.routes';
+import { provideEnvironmentConfig } from './core/providers/environment.provider';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -20,5 +22,6 @@ export const appConfig: ApplicationConfig = {
       withComponentInputBinding(),
       withPreloading(NoPreloading),
     ),
+    provideEnvironmentConfig(environment),
   ],
 };

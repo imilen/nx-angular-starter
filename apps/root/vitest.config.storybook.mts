@@ -41,6 +41,7 @@ export default defineConfig({
         'src/**/*.spec.ts',
         'src/test-setup.ts',
         'src/main.ts',
+        'src/environments/**',
       ],
       provider: 'v8',
       reporter: ['text'],
