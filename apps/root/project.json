@@ -55,6 +55,9 @@
       "continuous": true,
       "executor": "@angular/build:dev-server",
       "defaultConfiguration": "development",
+      "readyWhen": {
+        "signal": true
+      },
       "configurations": {
         "production": {
           "buildTarget": "root:build:production"
@@ -63,9 +66,6 @@
           "buildTarget": "root:build:development"
         }
       }
-    },
-    "lint": {
-      "executor": "@nx/eslint:lint"
     },
     "test": {
       "executor": "@analogjs/vitest-angular:test",
@@ -77,6 +77,10 @@
     "serve-static": {
       "continuous": true,
       "executor": "@nx/web:file-server",
+      "readyWhen": {
+        "signal": true
+      },
+      "dependsOn": ["build"],
       "options": {
         "buildTarget": "root:build",
         "port": 4200,
